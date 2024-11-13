@@ -1,0 +1,87 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <title>Web Browser Client</title>
+</head>
+<body>
+    <h1>STEREOCAMERA FOOTAGE</h1>
+    <div class="cards">
+        <div class="card">
+            <img id="ESP32-1" src="" />
+            <h2><b>CAM 1</b></h2>
+        </div>
+
+        <div class="card">
+            <img id="ESP32-2" src="" />
+            <h2><b>CAM 2</b></h2>
+        </div>
+    </div>
+
+    <button id="captureBoth">Capture Both Images</button>
+
+    <script>
+        const img_1 = document.getElementById("ESP32-1");
+        const img_2 = document.getElementById("ESP32-2");
+        const captureBothButton = document.getElementById("captureBoth");
+
+        const WS_URL = 'ws://192.168.0.104:8888';
+        const ws = new WebSocket(WS_URL);
+
+        let urlObject1 = null;
+        let urlObject2 = null;
+        let imagesReceived = { cam1: false, cam2: false };
+
+        ws.onopen = () => {
+            console.log(`Connected to ${WS_URL}`);
+            ws.send("WEB_CLIENT");
+        };
+
+        ws.onmessage = async (message) => {
+            const arrayBuffer = message.data;
+
+            const blobObj = new Blob([arrayBuffer], { type: "image/jpeg" });
+            const buf = await blobObj.arrayBuffer();
+            const uint8 = new Uint8Array(buf.slice(12, 13));
+            const currentCam = uint8[0];
+            console.log("Current Camera: ", currentCam);
+
+            // Revoke the previous object URL for memory management
+            if (currentCam === 1) {
+                if (urlObject1) URL.revokeObjectURL(urlObject1);
+                urlObject1 = URL.createObjectURL(blobObj);
+                img_1.src = urlObject1;
+                imagesReceived.cam1 = true;
+            } else if (currentCam === 2) {
+                if (urlObject2) URL.revokeObjectURL(urlObject2);
+                urlObject2 = URL.createObjectURL(blobObj);
+                img_2.src = urlObject2;
+                imagesReceived.cam2 = true;
+            }
+        };
+
+        captureBothButton.addEventListener("click", () => {
+            // Check if both images have been received
+            if (imagesReceived.cam1 && imagesReceived.cam2) {
+                saveImage("leftcam", img_1);
+                saveImage("rightcam", img_2);
+                console.log("Both images have been saved.");
+            } else {
+                console.log("Waiting for both images to be received...");
+            }
+        });
+
+        function saveImage(filename, imgElement) {
+            if (imgElement.src) {
+                const a = document.createElement("a");
+                a.href = imgElement.src;
+                a.download = `${filename}.jpg`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } else {
+                console.log(`No image to save for ${filename}`);
+            }
+        }
+    </script>
+</body>
+</html>

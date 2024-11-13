@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+html {
+    font-size: 22px;
+    background-color: #000000; 
+}
+
+body {
+    color: whitesmoke;
+    padding: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2 {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    color: #8B0000; 
+    margin-bottom: 20px;
+}
+
+.cards {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.card {
+    background-color: #000000;
+    color: whitesmoke;
+    padding: 1rem;
+    border: 2px solid #8B0000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card img {
+    width: 300px;
+    height: auto;
+    border: 2px solid #8B0000;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    color: whitesmoke;
+    background-color: #8B0000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #A80000;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 800px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
