@@ -4,9 +4,9 @@
 #define CAMERA_MODEL_AI_THINKER
 #include "camera_pins.h"
 
-const char* ssid = "ACTFIBERNET";
-const char* password = "viva9904";
-const char* websocket_server_host = "192.168.0.104";
+const char* ssid = ""; // Access Point Name
+const char* password = ""; // Access Point Password
+const char* websocket_server_host = ""; //IP
 const uint16_t websocket_server_port = 8888;
 
 using namespace websockets;

@@ -137,8 +137,8 @@ map2x, map2y = cv2.initUndistortRectifyMap(
     right_camera_matrix, right_dist_coeffs, R2, P2, img_size, cv2.CV_32FC1
 )
 
-img_left = cv2.imread("leftcam (10).jpg")
-img_right = cv2.imread("rightcam (10).jpg")
+img_left = cv2.imread("leftcam (18).jpg")
+img_right = cv2.imread("rightcam (18).jpg")
 
 
 # Applying rectification to the images
@@ -157,8 +157,8 @@ cv2.imwrite("rectified_right.jpg", rectified_right)
 gray_left = cv2.imread("rectified_left.jpg", cv2.IMREAD_GRAYSCALE)
 gray_right = cv2.imread("rectified_right.jpg", cv2.IMREAD_GRAYSCALE)
 
-numDisparities = 16 * 15   # Increase or Decrease depending on scene depth range
-blockSize =  7 # Increase for Precision
+numDisparities = 16 * 12   # Increase or Decrease depending on scene depth range
+blockSize =  9 # Increase for Precision
 
 # Creating the StereoSGBM object
 stereo_sgbm = cv2.StereoSGBM_create(
