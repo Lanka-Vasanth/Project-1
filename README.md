@@ -6,7 +6,7 @@ A stereo camera built using ESP32 camera modules to reconstruct 2D stereo images
 
 ESP32 camera module
 
-<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/CameraModule.jpg" width="1599" height="1200" />
+<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/CameraModule.jpg" />
 
 Build 1
 
