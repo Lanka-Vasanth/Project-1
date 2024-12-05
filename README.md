@@ -10,15 +10,15 @@ ESP32 camera module
 
 Build 1
 
-<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/build1.png" width="940" height="898" />
+<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/build1.png" />
 
 Final Build
 
-<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/build2.jpg" width="1599" height="1200" />
+<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/build2.jpg"  />
 
 
 ##Web Client
 
-<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/WebClient.png" width="1920" height="970" />
+<img src="https://github.com/Lanka-Vasanth/StereoVision_Project/blob/master/WebClient.png"  />
 
 
